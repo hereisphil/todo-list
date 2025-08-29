@@ -6,7 +6,7 @@ const listContainer = document.getElementById("list-container");
 function addTask() {
   if (inputBox.value !== "") {
     let li = document.createElement("li");
-    li.innerHTML = inputBox.value;
+    li.innerHTML = inputBox.value.trim();
     listContainer.appendChild(li);
     let span = document.createElement("span");
     span.innerHTML = `<i class="fa-solid fa-x"></i>`;

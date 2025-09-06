@@ -23,8 +23,7 @@ listContainer.addEventListener(
       saveData();
     }
     if (e.target.tagName === "SPAN") {
-      e.target.parentElement.remove();
-      saveData();
+      removeData(e)
     }
   },
   false
@@ -34,7 +33,18 @@ function saveData() {
   localStorage.setItem("data", listContainer.innerHTML);
 }
 
+//Its a bit cleaner to wrap this in a function
+function removeData(e){
+  e.target.parentElement.remove();
+  saveData()
+}
+
 function showTask() {
   listContainer.innerHTML = localStorage.getItem("data");
 }
-showTask();
+
+//Instead of just showing the tasks when the JS is ready, make it a habit to wait for the entire domain
+document.addEventListener("DOMContentLoaded", () => {
+  showTask()
+})
+
